@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Request, Response
-from src.handler import handler
 from src.squemas import dataFacebook
-from src.payload import payloadFacebok
+from src.payload import payloadFacebook
+from src.controller import controller
 from src.setting import VERYFY_TOKEN_FACEBOOK
 
 api = APIRouter()
@@ -23,7 +23,7 @@ async def verify(request:Request):
 
 @api.post('/webhook')
 def receiveData(data:dataFacebook):
-    payload = payloadFacebok(data)
-    handler(payload)
-
+    payload = payloadFacebook(data)
+    controller(payload)
+    
     return Response("ok", status_code=200)

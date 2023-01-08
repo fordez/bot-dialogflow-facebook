@@ -1,5 +1,6 @@
 
-def payloadFacebok(data) -> dict:
+
+def payloadFacebook(data) -> dict:
         try:    
                 payload = {}
                 data = data.entry[0]['messaging'][0]
@@ -10,7 +11,7 @@ def payloadFacebok(data) -> dict:
                         if data['message']['text']:
                                 payload['message'] = data['message']['text']
                                 payload['message_type'] = 'text'
-                                
+        
                 except:
                         if data['message']['attachments'][0]['type'] == 'location':
                                 data = data['message']['attachments'][0]['payload']['coordinates']
