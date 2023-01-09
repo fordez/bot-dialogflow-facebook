@@ -8,4 +8,5 @@ def controller(payload):
             senderAction(payload['sender_id'])
             ai = sendDialogflow(payload['message'], 12345)
             print(ai)
+            
             responseMessenger(payload['sender_id'], ai['answer'])
